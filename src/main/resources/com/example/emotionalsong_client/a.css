@@ -1,0 +1,17 @@
+#bgsf{
+    -fx-background-color: linear-gradient(to bottom, #565656, #2b2b2b);
+
+}
+#sp{
+    -fx-background: #ffffff;
+
+}
+#pb{
+    -fx-background-color:#ffffff;
+    margin-top: 10px;
+}
+
+#src:focused{
+    -fx-focus-color: transparent;
+    -fx-background-insets: -1.4, 0, 1, 2;
+}
