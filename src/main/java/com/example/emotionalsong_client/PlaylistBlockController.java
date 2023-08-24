@@ -5,42 +5,35 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import java.io.BufferedReader;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PlaylistController implements Initializable {
+public class PlaylistBlockController implements Initializable {
     @FXML
     protected Text pb_nome;
     @FXML
     protected Text pb_num;
     @FXML
     protected Text pb_id;
-    private static HelloController hc;
+
     private static VBox pbox;
 
 
 
-    public void load(HelloController c, VBox p, String id, String nome, String ncanzoni){
-
-        hc = c;
+    public void load(VBox p, String id, String nome, String ncanzoni){
         pbox = p;
-
 
         URL caurl = getClass().getResource("playlistBlock.fxml");
         Parent ca = null;
-        //FXMLLoader ca = null;
         try {
             FXMLLoader f = new FXMLLoader(caurl);
             ca =f.load();
-            PlaylistController controller = f.getController();
+            PlaylistBlockController controller = f.getController();
 
             controller.pb_nome.setText(nome);
             controller.pb_num.setText(ncanzoni+" canzoni");

@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="pb" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="277.0" style="-fx-background-color: #000000;" stylesheets="@a.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.emotionalsong_client.PlaylistController">
+<AnchorPane id="pb" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="277.0" style="-fx-background-color: #000000;" stylesheets="@a.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.emotionalsong_client.PlaylistBlockController">
    <children>
       <Button layoutX="-7.0" layoutY="-5.0" mnemonicParsing="false" onAction="#a" prefHeight="75.0" prefWidth="277.0" style="-fx-background-color: black;">
          <graphic>

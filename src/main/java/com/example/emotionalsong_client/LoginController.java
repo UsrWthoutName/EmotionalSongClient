@@ -38,7 +38,6 @@ public class LoginController {
         accediB = b;
         usernameTxt = t;
         hc = c;
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Login.fxml"));
         if (!HelloController.LgOp){
             HelloController.LgOp= true;
@@ -81,6 +80,7 @@ public class LoginController {
                     s.close();
                     close(ae);
                     hc.loadPlaylists();
+                    System.out.println("caricamento playlist");
 
                 }else{
                     errText.setText("credenziali errate");
