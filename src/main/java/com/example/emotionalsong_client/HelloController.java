@@ -47,6 +47,7 @@ public class HelloController implements Initializable {
     static String IP = "localhost";
     static int PORT= 5000;
     static boolean LgOp = false;
+    static boolean CPOP = false;
     static String userID;
     static String[] playlistNOME;
     static String[] playlistID;
@@ -90,10 +91,24 @@ public class HelloController implements Initializable {
     }
     //CARICA PLAYLIST NELLA BARRA LATERALE
     public void loadPlaylists(){
+        pbox.getChildren().clear();
         sp.setVisible(true);
         accadv.setVisible(false);
         sp.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         pbox.setVisible(true);
+
+
+        URL caurl = getClass().getResource("opCP.fxml");
+        Parent ca = null;
+        try {
+            FXMLLoader f = new FXMLLoader(caurl);
+            ca =f.load();
+            PlaylistBlockController controller = f.getController();
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        pbox.getChildren().add(ca);
+
 
         try {
             Socket s = new Socket(HelloController.IP, HelloController.PORT);
@@ -178,10 +193,21 @@ public class HelloController implements Initializable {
             in.readLine();
             out.println(id);
             String[] r = in.readLine().split("~");
-            System.out.println(r[0]);
-            if (r[0].equals("null")){
-                //STAMPA CANZONE NON ANCORA VALUTATA
 
+            URL url = getClass().getResource("song.fxml");
+            FXMLLoader fxmlLoader = new FXMLLoader(url);
+            Parent ca = fxmlLoader.load();
+            SongController sc = fxmlLoader.getController();
+            sc.sg_nome.setText(nome);
+            sc.sg_anno.setText(anno);
+            sc.sg_artista.setText(autore);
+
+
+            if (r[0].equals("null")){
+                sc.sg_BLC1.setVisible(false);
+                sc.sg_BLC2.setVisible(false);
+                sc.sg_BLC3.setVisible(false);
+                sc.sg_NV.setVisible(true);
             }
             else {
                 //arrotonda valore double in x.x (1 decimale)
@@ -192,31 +218,19 @@ public class HelloController implements Initializable {
                     r[i]=dt;
                     i++;
                 }
+                sc.val_AMZ.setText(r[0]);
+                sc.val_SOL.setText(r[1]);
+                sc.val_TND.setText(r[2]);
+                sc.val_NOS.setText(r[3]);
+                sc.val_CAL.setText(r[4]);
+                sc.val_POW.setText(r[5]);
+                sc.val_JOY.setText(r[6]);
+                sc.val_TEN.setText(r[7]);
+                sc.val_SAD.setText(r[8]);
 
             }
-            URL url = getClass().getResource("song.fxml");
-            FXMLLoader fxmlLoader = new FXMLLoader(url);
-            Parent ca = fxmlLoader.load();
-            SongController sc = fxmlLoader.getController();
-            sc.sg_nome.setText(nome);
-            sc.sg_anno.setText(anno);
-            sc.sg_artista.setText(autore);
-
-            sc.val_AMZ.setText(r[0]);
-            sc.val_SOL.setText(r[1]);
-            sc.val_TND.setText(r[2]);
-            sc.val_NOS.setText(r[3]);
-            sc.val_CAL.setText(r[4]);
-            sc.val_POW.setText(r[5]);
-            sc.val_JOY.setText(r[6]);
-            sc.val_TEN.setText(r[7]);
-            sc.val_SAD.setText(r[8]);
-
 
             String rec = in.readLine();
-            System.out.println("asdisda");
-            System.out.println(rec);
-
             centralVB.getChildren().add(ca); //VISUALIZZO VALUTAZIONI CANZONE
 
 
@@ -236,38 +250,21 @@ public class HelloController implements Initializable {
                     sc.em_rec.setText(sr[i+1]);
                     centralVB.getChildren().add(ca);
                     i+=2;
-
                 }
             }
-            else {
-                System.out.println("termine");
-            }
-
-
-
-            //
-
-
-
-
-
-
-
-            //
-
-
-            //REALIZZARE INTERFACCIA GRAFICA SU LIVELLI
-            //CANZONE CON VALUTAZIONI
-            //N RECENSIONI
 
         }catch (Exception e){
-            System.err.println(e
-            );
+            System.err.println(e);
         }
 
 
 
     }
+    public void creaPlaylist(){
+        PlaylistCreationController pc = new PlaylistCreationController();
+        pc.load();
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

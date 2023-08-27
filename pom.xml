@@ -15,6 +15,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -73,6 +74,8 @@
                     </execution>
                 </executions>
             </plugin>
+
+
         </plugins>
     </build>
 </project>

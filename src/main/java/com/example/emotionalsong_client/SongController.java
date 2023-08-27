@@ -1,6 +1,9 @@
 package com.example.emotionalsong_client;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 public class SongController {
@@ -32,6 +35,20 @@ public class SongController {
     public Text em_nome;
     @FXML
     public Text em_rec;
+    @FXML
+    public AnchorPane sg_BLC1;
+    @FXML
+    public AnchorPane sg_BLC2;
+    @FXML
+    public AnchorPane sg_BLC3;
+    @FXML
+    public Text sg_NV;
+
+    @FXML
+    private ComboBox sb_playlist;
+    @FXML
+    private Button addBTN;
+
 
 
 }

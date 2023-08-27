@@ -17,7 +17,7 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <Text fx:id="sb_anno" layoutX="218.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="anno" wrappingWidth="106.13672637939453">
+                  <Text fx:id="sb_anno" layoutX="227.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="anno" wrappingWidth="42.13672637939453">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -27,9 +27,14 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <ComboBox fx:id="sb_playlist" layoutX="431.0" layoutY="20.0" prefWidth="150.0" promptText="seleziona playlist" />
+                  <ComboBox fx:id="sb_playlist" layoutX="489.0" layoutY="20.0" prefWidth="150.0" promptText="seleziona playlist" />
                   <Text fx:id="sb_id" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="219.99998474121094" />
-                  <Button fx:id="addBTN" layoutX="588.0" layoutY="20.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="131.0" text="aggiungi alla playlist" />
+                  <Button fx:id="addBTN" layoutX="648.0" layoutY="20.0" mnemonicParsing="false" onAction="#addPlaylist" prefHeight="26.0" prefWidth="78.0" text="aggiungi " />
+                  <Text fx:id="sb_anno1" layoutX="280.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Canzone già presente nella playlist selezionata" wrappingWidth="188.5367202758789">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
          </graphic>
