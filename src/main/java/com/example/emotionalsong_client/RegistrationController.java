@@ -92,9 +92,6 @@ public class RegistrationController {
                         hc.usernameTag.setText(unTF.getText());
                         hc.usernameTag.setVisible(true);
                         hc.accediBTN.setVisible(false);
-                        in.close();
-                        out.close();
-                        s.close();
                         close(ae);
                         HelloController.LgOp = false;
                         hc.loadPlaylists();

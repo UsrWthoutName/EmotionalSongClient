@@ -109,7 +109,7 @@ public class HelloController implements Initializable {
             System.out.println(e);
         }
         pbox.getChildren().add(ca);
-
+        System.out.println(userID);
 
         try {
             Socket s = new Socket(HelloController.IP, HelloController.PORT);
@@ -120,27 +120,29 @@ public class HelloController implements Initializable {
             out.println(HelloController.userID);
 
             int numEl = Integer.parseInt(in.readLine());
-            System.out.println(numEl);
-            playlistNOME = new String[numEl];
-            playlistID = new String[numEl];
-            String playistsMsg = in.readLine();
-            s.close();
+            if (numEl!=0){
+                System.out.println(numEl);
+                playlistNOME = new String[numEl];
+                playlistID = new String[numEl];
+                String playistsMsg = in.readLine();
+                s.close();
 
 
-            String[] playlist = playistsMsg.split("~");
-            //0 = ID
-            //1 = NOME PLAYLIST
-            //2 = NUMERO CANZONI
-            //...
-            int i =0;
-            int j=0;
-            while (i<playlist.length){
-                PlaylistBlockController block = new PlaylistBlockController();
-                block.load(pbox, playlist[i], playlist[i+1], playlist[i+2]);
-                playlistNOME[j] = playlist[i+1];
-                playlistID[j] = playlist[i];
-                i+=3;
-                j++;
+                String[] playlist = playistsMsg.split("~");
+                //0 = ID
+                //1 = NOME PLAYLIST
+                //2 = NUMERO CANZONI
+                //...
+                int i =0;
+                int j=0;
+                while (i<playlist.length){
+                    PlaylistBlockController block = new PlaylistBlockController();
+                    block.load(pbox, playlist[i], playlist[i+1], playlist[i+2]);
+                    playlistNOME[j] = playlist[i+1];
+                    playlistID[j] = playlist[i];
+                    i+=3;
+                    j++;
+                }
             }
         }catch (IOException e){
             //MANCATA CONNESSIONE A SERVER
