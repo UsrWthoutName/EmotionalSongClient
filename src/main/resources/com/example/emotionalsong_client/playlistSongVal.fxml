@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="265.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.emotionalsong_client.PlaylistController">
+   <children>
+      <Text fx:id="sb_nome" layoutX="33.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCanzone" wrappingWidth="575.736701965332">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="sb_anno" layoutX="417.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="anno" wrappingWidth="42.13672637939453">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="sb_autore" layoutX="33.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autore" wrappingWidth="526.3999969482422">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="sb_id" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="219.99998474121094" />
+      <AnchorPane layoutX="1.0" layoutY="100.0" prefHeight="146.0" prefWidth="251.0">
+         <children>
+            <Text layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amazement" wrappingWidth="92.53668594360352">
+               <font>
+                  <Font size="15.0" />
+               </font></Text>
+            <Text layoutX="20.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tenderness" wrappingWidth="92.53668594360352">
+               <font>
+                  <Font size="15.0" />
+               </font></Text>
+            <Text layoutX="20.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solemnity" wrappingWidth="92.53668594360352">
+               <font>
+                  <Font size="15.0" />
+               </font></Text>
+            <Text fx:id="sb_am" layoutX="130.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5.5" wrappingWidth="34.936710357666016">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="sb_te" layoutX="130.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5.5" wrappingWidth="34.936710357666016">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="sb_so" layoutX="130.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5.5" wrappingWidth="34.936710357666016">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="251.0" layoutY="100.0" prefHeight="146.0" prefWidth="251.0">
+         <children>
+            <Text layoutX="20.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calmness" wrappingWidth="92.53668594360352">
+               <font>
+                  <Font size="15.0" />
+               </font></Text>
+            <Text layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nostalgia" wrappingWidth="92.53668594360352">
+               <font>
+                  <Font size="15.0" />
+               </font></Text>
+            <Text layoutX="20.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Power" wrappingWidth="92.53668594360352">
+               <font>
+                  <Font size="15.0" />
+               </font></Text>
+            <Text fx:id="sb_no" layoutX="130.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5.5" wrappingWidth="34.936710357666016">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="sb_po" layoutX="130.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5.5" wrappingWidth="34.936710357666016">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="sb_ca" layoutX="130.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5.5" wrappingWidth="34.936710357666016">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="502.0" layoutY="100.0" prefHeight="164.0" prefWidth="251.0">
+         <children>
+            <Text layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Joy" wrappingWidth="92.53668594360352">
+               <font>
+                  <Font size="15.0" />
+               </font></Text>
+            <Text layoutX="20.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tension" wrappingWidth="92.53668594360352">
+               <font>
+                  <Font size="15.0" />
+               </font></Text>
+            <Text layoutX="20.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sadness" wrappingWidth="92.53668594360352">
+               <font>
+                  <Font size="15.0" />
+               </font></Text>
+            <Text fx:id="sb_jo" layoutX="130.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5.5" wrappingWidth="34.936710357666016">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="sb_sa" layoutX="130.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5.5" wrappingWidth="34.936710357666016">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="sb_ts" layoutX="130.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5.5" wrappingWidth="34.936710357666016">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

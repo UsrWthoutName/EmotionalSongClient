@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.emotionalsong_client.Playlist"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="129.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.emotionalsong_client.PlaylistController">
+   <children>
+      <Text fx:id="pl_nome" layoutX="28.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Playlist" wrappingWidth="670.1366653442383">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="pl_num" layoutX="28.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero canzoni" wrappingWidth="283.73670196533203">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="pl_val" layoutX="471.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valutata o Da Valutare" wrappingWidth="283.73670196533203">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <Button fx:id="pl_valBTN" layoutX="529.0" layoutY="76.0" mnemonicParsing="false" onAction="#valuta" text="Valuta Playlist">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Text fx:id="pl_id" layoutX="217.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="188.5366439819336">
+         <font>
+            <Font size="1.0" />
+         </font>
+      </Text>
+   </children>
 </AnchorPane>

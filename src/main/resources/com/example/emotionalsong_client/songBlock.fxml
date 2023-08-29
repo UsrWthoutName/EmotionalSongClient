@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -27,9 +26,7 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <ComboBox fx:id="sb_playlist" layoutX="489.0" layoutY="20.0" prefWidth="150.0" promptText="seleziona playlist" />
                   <Text fx:id="sb_id" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="219.99998474121094" />
-                  <Button fx:id="addBTN" layoutX="648.0" layoutY="20.0" mnemonicParsing="false" onAction="#addPlaylist" prefHeight="26.0" prefWidth="78.0" text="aggiungi " />
                   <Text fx:id="sb_anno1" layoutX="280.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Canzone già presente nella playlist selezionata" wrappingWidth="188.5367202758789">
                      <font>
                         <Font size="15.0" />

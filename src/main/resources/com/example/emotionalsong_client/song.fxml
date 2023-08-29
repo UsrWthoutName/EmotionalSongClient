@@ -13,7 +13,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Text>
-      <Text fx:id="sg_anno" layoutX="437.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="anno" wrappingWidth="283.73670196533203">
+      <Text fx:id="sg_anno" layoutX="421.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="anno" wrappingWidth="283.73670196533203">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -57,6 +57,7 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
+                  <Text fx:id="sg_id" layoutX="15.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="sg_BLC2" layoutX="254.0" layoutY="-2.0" prefHeight="250.0" prefWidth="254.0">
@@ -136,5 +137,10 @@
       </AnchorPane>
       <ComboBox fx:id="sb_playlist" layoutX="499.0" layoutY="30.0" prefWidth="150.0" promptText="seleziona playlist" />
       <Button fx:id="addBTN" layoutX="659.0" layoutY="29.0" mnemonicParsing="false" onAction="#addPlaylist" prefHeight="26.0" prefWidth="78.0" text="aggiungi " />
+      <Text fx:id="sg_log" layoutX="499.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="238.13672637939453">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

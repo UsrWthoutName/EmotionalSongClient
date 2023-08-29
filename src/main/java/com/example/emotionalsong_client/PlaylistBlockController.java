@@ -45,8 +45,8 @@ public class PlaylistBlockController implements Initializable {
 
     }
 
-    public void a(){
-        System.out.println("playlist "+pb_id.getText());
+    public void loadPlaylist(){
+        HelloController.hc.openPlaylist(pb_id.getText(), pb_nome.getText(), pb_num.getText());
     }
     public void creaPlaylist(){
         HelloController.hc.creaPlaylist();

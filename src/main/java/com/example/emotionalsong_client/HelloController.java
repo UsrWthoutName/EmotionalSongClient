@@ -13,10 +13,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
 import java.util.ArrayList;
@@ -44,10 +42,13 @@ public class HelloController implements Initializable {
 
 
     public static HelloController hc;
+    //LOCALHOST:5000 INDIRIZZO STANDARD -> se non esiste init.txt
     static String IP = "localhost";
     static int PORT= 5000;
-    static boolean LgOp = false;
-    static boolean CPOP = false;
+    static boolean LgOp = false;    //Schermata login aperta
+    static boolean CPOP = false;    //Schermata creazione playlist aperta
+    static boolean StOp = false;    //Schermata impostazioni aperta
+    static boolean vlOp = false;    //Schermata valutazioni aperta
     static String userID;
     static String[] playlistNOME;
     static String[] playlistID;
@@ -171,7 +172,7 @@ public class HelloController implements Initializable {
             int l = info.length/4;
             while (j<l){
                 SongSearchController sc = new SongSearchController();
-                sc.load(centralVB, info[i+0], info[i+1], info[i+2], info[i+3], playlistNOME);
+                sc.load(centralVB, info[i+0], info[i+1], info[i+2], info[i+3]);
                 i+=4;
                 j++;
             }
@@ -181,90 +182,25 @@ public class HelloController implements Initializable {
     }
     //APRE UNA CANZONE E VISUALIZZA INFORMAZIONI, MEDIA VALUTAZIONI E RECENSIONI
     public void loadSong(String id, String nome, String autore, String anno){
-        System.out.println(id);
-        centralVB.getChildren().clear();
-
-        try {
-            Socket s = new Socket(IP, PORT);
-            PrintWriter out = new PrintWriter(s.getOutputStream(), true);
-            BufferedReader in =new BufferedReader(new InputStreamReader(s.getInputStream()));
-
-            out.println("C");
-            in.readLine();
-            out.println(id);
-            String[] r = in.readLine().split("~");
-
-            URL url = getClass().getResource("song.fxml");
-            FXMLLoader fxmlLoader = new FXMLLoader(url);
-            Parent ca = fxmlLoader.load();
-            SongController sc = fxmlLoader.getController();
-            sc.sg_nome.setText(nome);
-            sc.sg_anno.setText(anno);
-            sc.sg_artista.setText(autore);
-
-
-            if (r[0].equals("null")){
-                sc.sg_BLC1.setVisible(false);
-                sc.sg_BLC2.setVisible(false);
-                sc.sg_BLC3.setVisible(false);
-                sc.sg_NV.setVisible(true);
-            }
-            else {
-                //arrotonda valore double in x.x (1 decimale)
-                int i =0;
-                while (i<9){
-                    Double d = Double.parseDouble(r[i]);
-                    String dt = String.format("%.1f",d);
-                    r[i]=dt;
-                    i++;
-                }
-                sc.val_AMZ.setText(r[0]);
-                sc.val_SOL.setText(r[1]);
-                sc.val_TND.setText(r[2]);
-                sc.val_NOS.setText(r[3]);
-                sc.val_CAL.setText(r[4]);
-                sc.val_POW.setText(r[5]);
-                sc.val_JOY.setText(r[6]);
-                sc.val_TEN.setText(r[7]);
-                sc.val_SAD.setText(r[8]);
-
-            }
-
-            String rec = in.readLine();
-            centralVB.getChildren().add(ca); //VISUALIZZO VALUTAZIONI CANZONE
-
-
-            if (!rec.equals("-1")){
-                String[] sr = rec.split("~");
-                int l = sr.length/2; //numero blocchi emozione~recensione
-                int i =0;
-                while (i<l*2){
-                    url = getClass().getResource("review.fxml");
-                    fxmlLoader = new FXMLLoader(url);
-                    ca = fxmlLoader.load();
-                    sc = fxmlLoader.getController();
-                    sr[i]=  sr[i].substring(0, sr[i].length()-2); //rimuove ultimi 2 elementi (_n)
-                    sr[i] = sr[i].substring(0, 1).toUpperCase() + sr[i].substring(1); //prima lettera uppercase
-
-                    sc.em_nome.setText(sr[i]);
-                    sc.em_rec.setText(sr[i+1]);
-                    centralVB.getChildren().add(ca);
-                    i+=2;
-                }
-            }
-
-        }catch (Exception e){
-            System.err.println(e);
-        }
-
-
-
+        SongController sc = new SongController();
+        sc.load(id, nome, autore, anno);
+    }
+    public void openPlaylist(String id, String nomePlaylist, String numerocanzoni){
+        PlaylistController pc = new PlaylistController();
+        pc.load(id, nomePlaylist, numerocanzoni);
     }
     public void creaPlaylist(){
         PlaylistCreationController pc = new PlaylistCreationController();
         pc.load();
     }
-
+    public void settings() throws IOException {
+        SettingsController sc = new SettingsController();
+        sc.load();
+    }
+    public void valuta(String idplaylist){
+        ValController vc = new ValController();
+        vc.load(idplaylist);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -274,5 +210,12 @@ public class HelloController implements Initializable {
         pbox = Pbox;
         searchT = srcTXT;
         centralVB = cVB;
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("init.txt"));
+            HelloController.IP =  br.readLine();
+            HelloController.PORT = Integer.parseInt(br.readLine());
+
+        }catch (Exception e){}
     }
 }
