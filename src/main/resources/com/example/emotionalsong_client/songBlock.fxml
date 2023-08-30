@@ -11,27 +11,22 @@
          <graphic>
             <AnchorPane prefHeight="66.0" prefWidth="754.0">
                <children>
-                  <Text fx:id="sb_nome" layoutX="14.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCanzone" wrappingWidth="234.13672637939453">
+                  <Text fx:id="sb_nome" layoutX="22.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCanzone" wrappingWidth="234.13672637939453">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <Text fx:id="sb_anno" layoutX="227.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="anno" wrappingWidth="42.13672637939453">
+                  <Text fx:id="sb_anno" layoutX="442.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="anno" wrappingWidth="42.13672637939453">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <Text fx:id="sb_autore" layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autore" wrappingWidth="193.5999633789063">
+                  <Text fx:id="sb_autore" layoutX="22.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autore" wrappingWidth="193.5999633789063">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Text>
                   <Text fx:id="sb_id" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="219.99998474121094" />
-                  <Text fx:id="sb_anno1" layoutX="280.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Canzone già presente nella playlist selezionata" wrappingWidth="188.5367202758789">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
                </children>
             </AnchorPane>
          </graphic>

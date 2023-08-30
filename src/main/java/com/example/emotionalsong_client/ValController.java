@@ -67,9 +67,13 @@ public class ValController {
     static BufferedReader in;
     static String[] canzoni;
     static int i;
+    static String idplaylist;
+    static String nomeplaylist ="";
+    static String numcanzoni = "";
     static String r;    //contiene canzoni e valutazioni da passare a server
-    public void load(String idplaylist){
+    public void load(String id){
         //esegue richiesta canzoni in playlist e gestisce la creazione delle finestre di valutazione
+        idplaylist = id;
         if (!HelloController.vlOp){
             HelloController.vlOp = true;
             r = idplaylist+"~";
@@ -226,6 +230,7 @@ public class ValController {
                     valWindow();
                 } else {
                     send(ae);
+                    HelloController.hc.openPlaylist(idplaylist, nomeplaylist, numcanzoni);
                     esci(ae);
                 }
             }
@@ -252,6 +257,11 @@ public class ValController {
             out.println("Vb");
             in.readLine();
             out.println(r);
+            String[] res = in.readLine().split("~");
+            nomeplaylist = res[0];
+            numcanzoni = res[1];
+
+
         }catch (Exception e){}
     }
 }

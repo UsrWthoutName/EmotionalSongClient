@@ -13,14 +13,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PlaylistBlockController implements Initializable {
+public class PlaylistBlockController {
     @FXML
-    protected Text pb_nome;
+    private Text pb_nome;
     @FXML
-    protected Text pb_num;
+    private Text pb_num;
     @FXML
-    protected Text pb_id;
-
+    private Text pb_id;
+    @FXML
     private static VBox pbox;
 
 
@@ -38,6 +38,8 @@ public class PlaylistBlockController implements Initializable {
             controller.pb_nome.setText(nome);
             controller.pb_num.setText(ncanzoni+" canzoni");
             controller.pb_id.setText(id);
+
+
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -52,8 +54,4 @@ public class PlaylistBlockController implements Initializable {
         HelloController.hc.creaPlaylist();
     }
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-    }
 }

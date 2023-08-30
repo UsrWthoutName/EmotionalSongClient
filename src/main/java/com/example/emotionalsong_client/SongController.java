@@ -60,10 +60,11 @@ public class SongController {
     @FXML
     private Text sg_log;
 
-    static private String[] pl;
+    static private String[] pln;
+    static private String[] pli;
 
     public void load(String id, String nome, String autore, String anno){
-        pl = HelloController.playlistNOME;
+        //pl = HelloController.playlistNOME;
 
         System.out.println(id);
         HelloController.centralVB.getChildren().clear();
@@ -75,6 +76,21 @@ public class SongController {
 
             out.println("C");
             in.readLine();
+            out.println(HelloController.userID);
+            String[] playlistvalide = in.readLine().split("~");
+            int l = playlistvalide.length;
+            int i = 0;
+            int j = 0;
+            pln = new String[l/2];
+            pli = new String[l/2];
+            while (i<l){
+                pli[j] = playlistvalide[i];
+                i++;
+                pln[j] = playlistvalide[i];
+                j++;
+                i++;
+            }
+
             out.println(id);
             String[] r = in.readLine().split("~");
 
@@ -96,7 +112,7 @@ public class SongController {
             }
             else {
                 //arrotonda valore double in x.x (1 decimale)
-                int i =0;
+                i =0;
                 while (i<9){
                     Double d = Double.parseDouble(r[i]);
                     String dt = String.format("%.1f",d);
@@ -115,14 +131,14 @@ public class SongController {
             }
 
 
-            int i = 0;
-            if (pl==null){
+            i = 0;
+            if (pln==null){
                 sc.sb_playlist.setVisible(false);
                 sc.addBTN.setVisible(false);
             }else{
-                int l = pl.length;
+                l = pln.length;
                 while (i<l){
-                    sc.sb_playlist.getItems().add(pl[i]);
+                    sc.sb_playlist.getItems().add(pln[i]);
                     i++;
                 }
             }
@@ -131,7 +147,7 @@ public class SongController {
 
             if (!rec.equals("-1")){
                 String[] sr = rec.split("~");
-                int l = sr.length/2; //numero blocchi emozione~recensione
+                l = sr.length/2; //numero blocchi emozione~recensione
                 i =0;
                 while (i<l*2){
                     url = getClass().getResource("review.fxml");
@@ -162,14 +178,14 @@ public class SongController {
             in.readLine();
             int pos=0;
             int i=0;
-            System.out.println(pl.length);
-            while (i< pl.length){
-                if (pl[i].equals(sb_playlist.getValue())){
+            System.out.println(pln.length);
+            while (i< pln.length){
+                if (pln[i].equals(sb_playlist.getValue())){
                     pos = i;
                 }
                 i++;
             }
-            String plst=HelloController.playlistID[pos];
+            String plst=pli[pos];
             System.out.println(plst);
             out.println(plst+"~"+sg_id.getText());
             String res = in.readLine();
@@ -179,6 +195,7 @@ public class SongController {
             else{
                 sg_log.setText("canzone già presente nella playlist");
             }
+            HelloController.hc.loadPlaylists();
         }catch (Exception e){
             System.out.println(e);
         }
