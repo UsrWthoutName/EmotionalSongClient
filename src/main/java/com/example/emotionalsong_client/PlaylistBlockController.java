@@ -3,23 +3,19 @@ package com.example.emotionalsong_client;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-
 import java.io.IOException;
 import java.net.URL;
-import java.util.ResourceBundle;
 
 public class PlaylistBlockController {
     @FXML
-    private Text pb_nome;
+    Text pb_nome;
     @FXML
-    private Text pb_num;
+    Text pb_num;
     @FXML
-    private Text pb_id;
+    Text pb_id;
     @FXML
     private static VBox pbox;
 
@@ -40,9 +36,7 @@ public class PlaylistBlockController {
             controller.pb_id.setText(id);
 
 
-        } catch (IOException e) {
-            System.out.println(e);
-        }
+        } catch (IOException e) {}
         pbox.getChildren().add(ca);
 
     }
@@ -52,6 +46,10 @@ public class PlaylistBlockController {
     }
     public void creaPlaylist(){
         HelloController.hc.creaPlaylist();
+    }
+
+    public void reload(){
+        HelloController.hc.loadPlaylists();
     }
 
 }

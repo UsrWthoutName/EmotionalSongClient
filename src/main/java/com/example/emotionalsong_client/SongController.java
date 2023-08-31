@@ -7,8 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -165,10 +165,17 @@ public class SongController {
             }
 
         }catch (Exception e){
-            System.err.println(e);
+            try {
+                HelloController.centralVB.getChildren().clear();
+                URL caurl = getClass().getResource("ErrorMsg.fxml");
+                FXMLLoader f = new FXMLLoader(caurl);
+                Parent ca =f.load();
+                HelloController.centralVB.getChildren().add(ca);
+            }catch (IOException e1){}
         }
     }
     public void addPlaylist(){
+        sg_log.setText("");
         try {
             Socket s = new Socket(HelloController.IP, HelloController.PORT);
             PrintWriter out = new PrintWriter(s.getOutputStream(), true);
@@ -197,7 +204,7 @@ public class SongController {
             }
             HelloController.hc.loadPlaylists();
         }catch (Exception e){
-            System.out.println(e);
+            sg_log.setText("errore di connessione, riprovare");
         }
     }
 }

@@ -5,8 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
-
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -29,7 +29,6 @@ public class PlaylistController {
     private Text sb_autore;
     @FXML
     private Text sb_anno;
-
     @FXML
     private Text sb_am;
     @FXML
@@ -150,11 +149,14 @@ public class PlaylistController {
             }
 
 
-
-
-
         }catch (Exception e){
-            System.out.println(e);
+            try {
+                HelloController.centralVB.getChildren().clear();
+                URL caurl = getClass().getResource("ErrorMsg.fxml");
+                FXMLLoader f = new FXMLLoader(caurl);
+                Parent ca =f.load();
+                HelloController.centralVB.getChildren().add(ca);
+            }catch (IOException e1){}
         }
     }
 

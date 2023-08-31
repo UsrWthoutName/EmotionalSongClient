@@ -10,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -33,9 +32,7 @@ public class PlaylistCreationController {
                 stage.initStyle(StageStyle.UNDECORATED);
                 stage.show();
             }
-        }catch (Exception e){
-            System.out.println(e);
-        }
+        }catch (Exception e){}
     }
     public void close(ActionEvent ae){
         Node n =(Node)ae.getSource();

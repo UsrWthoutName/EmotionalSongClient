@@ -8,16 +8,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.*;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
@@ -78,9 +74,8 @@ public class HelloController implements Initializable {
 
 
 
-    public void login() throws IOException, InterruptedException {
+    public void login() throws IOException {
         LoginController login = new LoginController();
-        //pbox.setVisible(true);
         login.load(accediBTN, usernameTag, hc);
     }
     public void registra(Button b, Text u, HelloController h) throws IOException {
@@ -98,18 +93,14 @@ public class HelloController implements Initializable {
         sp.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         pbox.setVisible(true);
 
-
         URL caurl = getClass().getResource("opCP.fxml");
         Parent ca = null;
         try {
             FXMLLoader f = new FXMLLoader(caurl);
             ca =f.load();
-            PlaylistBlockController controller = f.getController();
-        } catch (IOException e) {
-            System.out.println(e);
-        }
+        } catch (IOException e) {}
         pbox.getChildren().add(ca);
-        System.out.println(userID);
+
 
         try {
             Socket s = new Socket(HelloController.IP, HelloController.PORT);
@@ -121,7 +112,6 @@ public class HelloController implements Initializable {
 
             int numEl = Integer.parseInt(in.readLine());
             if (numEl!=0){
-                System.out.println(numEl);
                 playlistNOME = new String[numEl];
                 playlistID = new String[numEl];
                 String playistsMsg = in.readLine();
@@ -145,13 +135,16 @@ public class HelloController implements Initializable {
                 }
             }
         }catch (IOException e){
-            //MANCATA CONNESSIONE A SERVER
-            System.err.println("non va un cristo");
+            try {
+                pbox.getChildren().clear();
+                caurl = getClass().getResource("ReloadPlaylists.fxml");
+                FXMLLoader f = new FXMLLoader(caurl);
+                ca =f.load();
+                pbox.getChildren().add(ca);
+            }catch (Exception e1){}
         }
     }
     //CARICA SINGOLA PLAYLIST NEL BLOCCO CENTRALE
-    public void openPlaylist(){}
-    //ESEGUE LA RICERCA E VISUALIZZA RISULTATO IN BLOCCO CENTRALE
     public void cerca(){
         centralVB.getChildren().clear();
         centSCLP.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -161,14 +154,13 @@ public class HelloController implements Initializable {
 
             PrintWriter out = new PrintWriter(s.getOutputStream(), true);
             BufferedReader in =new BufferedReader(new InputStreamReader(s.getInputStream()));
-            System.out.println(searchT.getText());
 
             out.println("S");
             in.readLine();
             out.println(searchT.getText());
             String st = in.readLine();
             String[] info = st.split("~");
-            System.out.println(st);
+
             int i = 0;
             int j = 0;
             int l = info.length/4;
@@ -179,7 +171,13 @@ public class HelloController implements Initializable {
                 j++;
             }
         }catch (Exception e){
-            System.out.println(e);
+            try {
+                centralVB.getChildren().clear();
+                URL caurl = getClass().getResource("ErrorMsg.fxml");
+                FXMLLoader f = new FXMLLoader(caurl);
+                Parent ca =f.load();
+                centralVB.getChildren().add(ca);
+            }catch (IOException e1){}
         }
     }
     //APRE UNA CANZONE E VISUALIZZA INFORMAZIONI, MEDIA VALUTAZIONI E RECENSIONI

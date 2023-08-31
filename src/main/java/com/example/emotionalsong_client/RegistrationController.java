@@ -39,10 +39,7 @@ public class RegistrationController {
     Text errTXT;
 
 
-
     static private HelloController hc;
-    static private Text usernameTxt;
-
 
 
     public void load(HelloController c) throws IOException {
@@ -55,7 +52,7 @@ public class RegistrationController {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
-    public void accedi(ActionEvent ae) throws IOException, InterruptedException {
+    public void accedi(ActionEvent ae) throws IOException{
 
         close(ae);
         HelloController.LgOp = false;
