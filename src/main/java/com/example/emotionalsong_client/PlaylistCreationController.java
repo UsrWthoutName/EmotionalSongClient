@@ -44,7 +44,9 @@ public class PlaylistCreationController {
     }
     public void crea(ActionEvent ae){
         String np = pl_name.getText();
-        if (np.contains("~")){
+        if (np.equals("")){
+            errTXT.setText("impossibile creare");
+        }else if (np.contains("~")){
             errTXT.setText("il valore ~ non può essere presente");
         }else {
             try {
