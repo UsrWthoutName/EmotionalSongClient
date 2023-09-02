@@ -11,7 +11,7 @@
          <graphic>
             <AnchorPane prefHeight="98.0" prefWidth="746.0">
                <children>
-                  <Text fx:id="sb_nome" layoutX="28.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCanzone" wrappingWidth="234.13672637939453">
+                  <Text fx:id="sb_nome" layoutX="28.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NomeCanzone" wrappingWidth="677.3367691040039">
                      <font>
                         <Font size="18.0" />
                      </font>
