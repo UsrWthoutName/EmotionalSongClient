@@ -149,35 +149,53 @@ public class HelloController implements Initializable {
         centralVB.getChildren().clear();
         centSCLP.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
-        try {
-            Socket s = new Socket(HelloController.IP, HelloController.PORT);
-
-            PrintWriter out = new PrintWriter(s.getOutputStream(), true);
-            BufferedReader in =new BufferedReader(new InputStreamReader(s.getInputStream()));
-
-            out.println("S");
-            in.readLine();
-            out.println(searchT.getText());
-            String st = in.readLine();
-            String[] info = st.split("~");
-
-            int i = 0;
-            int j = 0;
-            int l = info.length/4;
-            while (j<l){
-                SongSearchController sc = new SongSearchController();
-                sc.load(centralVB, info[i+0], info[i+1], info[i+2], info[i+3]);
-                i+=4;
-                j++;
-            }
-        }catch (Exception e){
+        String str = searchT.getText();
+        if (str.contains("~")){
             try {
                 centralVB.getChildren().clear();
-                URL caurl = getClass().getResource("ErrorMsg.fxml");
+                URL caurl = getClass().getResource("StringErrorMsg.fxml");
                 FXMLLoader f = new FXMLLoader(caurl);
                 Parent ca =f.load();
                 centralVB.getChildren().add(ca);
-            }catch (IOException e1){}
+            }catch (Exception e){}
+        }else {
+            try {
+                Socket s = new Socket(HelloController.IP, HelloController.PORT);
+
+                PrintWriter out = new PrintWriter(s.getOutputStream(), true);
+                BufferedReader in =new BufferedReader(new InputStreamReader(s.getInputStream()));
+
+                out.println("S");
+                in.readLine();
+                out.println(str);
+                String st = in.readLine();
+                String[] info = st.split("~");
+
+                int i = 0;
+                int j = 0;
+                int l = info.length/4;
+                if (l==0){
+                    centralVB.getChildren().clear();
+                    URL caurl = getClass().getResource("SongNotFoundErrorMsg.fxml");
+                    FXMLLoader f = new FXMLLoader(caurl);
+                    Parent ca =f.load();
+                    centralVB.getChildren().add(ca);
+                }
+                while (j<l){
+                    SongSearchController sc = new SongSearchController();
+                    sc.load(centralVB, info[i+0], info[i+1], info[i+2], info[i+3]);
+                    i+=4;
+                    j++;
+                }
+            }catch (Exception e){
+                try {
+                    centralVB.getChildren().clear();
+                    URL caurl = getClass().getResource("ConnectionErrorMsg.fxml");
+                    FXMLLoader f = new FXMLLoader(caurl);
+                    Parent ca =f.load();
+                    centralVB.getChildren().add(ca);
+                }catch (IOException e1){}
+            }
         }
     }
     //APRE UNA CANZONE E VISUALIZZA INFORMAZIONI, MEDIA VALUTAZIONI E RECENSIONI

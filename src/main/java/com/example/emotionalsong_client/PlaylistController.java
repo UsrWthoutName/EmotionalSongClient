@@ -152,7 +152,7 @@ public class PlaylistController {
         }catch (Exception e){
             try {
                 HelloController.centralVB.getChildren().clear();
-                URL caurl = getClass().getResource("ErrorMsg.fxml");
+                URL caurl = getClass().getResource("ConnectionErrorMsg.fxml");
                 FXMLLoader f = new FXMLLoader(caurl);
                 Parent ca =f.load();
                 HelloController.centralVB.getChildren().add(ca);

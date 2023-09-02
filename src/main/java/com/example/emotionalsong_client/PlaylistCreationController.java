@@ -10,6 +10,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -29,7 +31,7 @@ public class PlaylistCreationController {
                 Stage stage = new Stage();
                 stage.setResizable(false);
                 stage.setScene(new Scene(r1));
-                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setOnCloseRequest(WindowEvent::consume);
                 stage.show();
             }
         }catch (Exception e){}
@@ -41,23 +43,28 @@ public class PlaylistCreationController {
         HelloController.CPOP = false;
     }
     public void crea(ActionEvent ae){
-        try {
-            Socket s = new Socket(HelloController.IP, HelloController.PORT);
-            PrintWriter out = new PrintWriter(s.getOutputStream(), true);
-            BufferedReader in =new BufferedReader(new InputStreamReader(s.getInputStream()));
+        String np = pl_name.getText();
+        if (np.contains("~")){
+            errTXT.setText("il valore ~ non può essere presente");
+        }else {
+            try {
+                Socket s = new Socket(HelloController.IP, HelloController.PORT);
+                PrintWriter out = new PrintWriter(s.getOutputStream(), true);
+                BufferedReader in =new BufferedReader(new InputStreamReader(s.getInputStream()));
 
-            out.println("B");
-            in.readLine();
-            out.println(HelloController.userID+"~"+pl_name.getText());
-            String res = in.readLine();
-            if (res.equals("-1")){
-                errTXT.setText("Playlist già esistente");
-            }else{
-                HelloController.hc.loadPlaylists();
-                close(ae);
+                out.println("B");
+                in.readLine();
+                out.println(HelloController.userID+"~"+np);
+                String res = in.readLine();
+                if (res.equals("-1")){
+                    errTXT.setText("Playlist già esistente");
+                }else{
+                    HelloController.hc.loadPlaylists();
+                    close(ae);
+                }
+            }catch (Exception e){
+                errTXT.setText("Impossibile connettersi al server");
             }
-        }catch (Exception e){
-            errTXT.setText("Impossibile connettersi al server");
         }
     }
 }

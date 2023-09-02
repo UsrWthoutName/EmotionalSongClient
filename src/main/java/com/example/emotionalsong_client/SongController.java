@@ -65,8 +65,8 @@ public class SongController {
 
     public void load(String id, String nome, String autore, String anno){
         //pl = HelloController.playlistNOME;
+        boolean lg = true;
 
-        System.out.println(id);
         HelloController.centralVB.getChildren().clear();
 
         try {
@@ -77,19 +77,29 @@ public class SongController {
             out.println("C");
             in.readLine();
             out.println(HelloController.userID);
-            String[] playlistvalide = in.readLine().split("~");
-            int l = playlistvalide.length;
-            int i = 0;
-            int j = 0;
-            pln = new String[l/2];
-            pli = new String[l/2];
-            while (i<l){
-                pli[j] = playlistvalide[i];
-                i++;
-                pln[j] = playlistvalide[i];
-                j++;
-                i++;
+
+            String rs = in.readLine();
+            if (rs.equals("n")) {
+                lg = false;
             }
+            int i;
+            int l;
+            if (lg){
+                String[] playlistvalide = rs.split("~");
+                l = playlistvalide.length;
+                i = 0;
+                int j = 0;
+                pln = new String[l/2];
+                pli = new String[l/2];
+                while (i<l){
+                    pli[j] = playlistvalide[i];
+                    i++;
+                    pln[j] = playlistvalide[i];
+                    j++;
+                    i++;
+                }
+            }
+
 
             out.println(id);
             String[] r = in.readLine().split("~");
@@ -132,7 +142,8 @@ public class SongController {
 
 
             i = 0;
-            if (pln==null){
+
+            if (!lg){
                 sc.sb_playlist.setVisible(false);
                 sc.addBTN.setVisible(false);
             }else{
@@ -167,12 +178,13 @@ public class SongController {
         }catch (Exception e){
             try {
                 HelloController.centralVB.getChildren().clear();
-                URL caurl = getClass().getResource("ErrorMsg.fxml");
+                URL caurl = getClass().getResource("ConnectionErrorMsg.fxml");
                 FXMLLoader f = new FXMLLoader(caurl);
                 Parent ca =f.load();
                 HelloController.centralVB.getChildren().add(ca);
             }catch (IOException e1){}
         }
+
     }
     public void addPlaylist(){
         sg_log.setText("");
@@ -185,7 +197,6 @@ public class SongController {
             in.readLine();
             int pos=0;
             int i=0;
-            System.out.println(pln.length);
             while (i< pln.length){
                 if (pln[i].equals(sb_playlist.getValue())){
                     pos = i;
@@ -193,7 +204,6 @@ public class SongController {
                 i++;
             }
             String plst=pli[pos];
-            System.out.println(plst);
             out.println(plst+"~"+sg_id.getText());
             String res = in.readLine();
             if (res.equals("1")){

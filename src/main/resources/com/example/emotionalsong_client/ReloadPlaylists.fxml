@@ -9,13 +9,13 @@
    <children>
       <AnchorPane id="pb" layoutY="-2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="111.0" prefWidth="278.0" style="-fx-background-color: #FFFFFF;" stylesheets="@a.css">
          <children>
-            <Text fx:id="pb_nome" layoutX="12.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si è verificato un errore nel caricamento delle playlist" wrappingWidth="253.33666229248047">
+            <Text fx:id="pb_nome" layoutX="12.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si è verificato un errore nel caricamento delle playlist" textAlignment="CENTER" wrappingWidth="253.33666229248047">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
             <Text fx:id="pb_id" layoutX="34.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="169.33666229248047" />
-            <Button layoutX="82.0" layoutY="72.0" mnemonicParsing="false" onAction="#reload" prefHeight="26.0" prefWidth="113.0" text="Ricarica " />
+            <Button layoutX="82.0" layoutY="70.0" mnemonicParsing="false" onAction="#reload" prefHeight="26.0" prefWidth="113.0" text="Ricarica " />
          </children>
       </AnchorPane>
    </children>

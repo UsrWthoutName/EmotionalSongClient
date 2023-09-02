@@ -28,11 +28,11 @@
             </AnchorPane>
             <Text fx:id="usernameTag" fill="WHITE" layoutX="26.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Utente" visible="false" wrappingWidth="222.93671417236328">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Text>
-            <Button id="src" fx:id="accediBTN" layoutX="26.0" layoutY="36.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="125.0" stylesheets="@a.css" text="Accedi o Registrati" />
-            <Button layoutX="944.0" layoutY="37.0" mnemonicParsing="false" onAction="#settings" text="Impostazioni" />
+            <Button id="src" fx:id="accediBTN" layoutX="64.0" layoutY="36.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="125.0" stylesheets="@a.css" text="Accedi o Registrati" />
+            <Button layoutX="923.0" layoutY="36.0" mnemonicParsing="false" onAction="#settings" text="Impostazioni" />
          </children>
       </AnchorPane>
       <AnchorPane layoutY="92.0" prefHeight="642.0" prefWidth="282.0" style="-fx-background-color: adadad;">

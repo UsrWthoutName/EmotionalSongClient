@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -42,9 +43,9 @@ public class LoginController {
             HelloController.LgOp= true;
             Parent r1 = fxmlLoader.load();
             Stage stage = new Stage();
+            stage.setOnCloseRequest(WindowEvent::consume);
             stage.setResizable(false);
             stage.setScene(new Scene(r1));
-            stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
         }
     }
@@ -69,7 +70,6 @@ public class LoginController {
                 String st = in.readLine();
                 if (!st.equals("-1")){
                     String[] idname = st.split("~");
-                    System.out.println("Accesso eseguito");
                     HelloController.userID = idname[1];
                     accediB.setVisible(false);
                     usernameTxt.setText(idname[0]);
@@ -79,7 +79,6 @@ public class LoginController {
                     s.close();
                     close(ae);
                     hc.loadPlaylists();
-                    System.out.println("caricamento playlist");
 
                 }else{
                     errText.setText("credenziali errate");

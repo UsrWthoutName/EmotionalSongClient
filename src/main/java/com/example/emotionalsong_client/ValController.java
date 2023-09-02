@@ -6,11 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -59,6 +62,8 @@ public class ValController {
     private Text val_nome;
     @FXML
     private Text val_id;
+    @FXML
+    private Text val_err;
 
     static Socket s;
     static PrintWriter out;
@@ -73,25 +78,28 @@ public class ValController {
         //esegue richiesta canzoni in playlist e gestisce la creazione delle finestre di valutazione
         idplaylist = id;
         if (!HelloController.vlOp){
-            HelloController.vlOp = true;
             r = idplaylist+"~";
             try {
                 s = new Socket(HelloController.IP, HelloController.PORT);
                 out = new PrintWriter(s.getOutputStream(), true);
                 in =new BufferedReader(new InputStreamReader(s.getInputStream()));
 
+                HelloController.vlOp = true;
+
+
                 out.println("V");
                 in.readLine();
                 out.println(idplaylist);
                 String c = in.readLine();
-                System.out.println("canzoni  "+c);
                 canzoni = c.split("~");
                 i = 0;
-                System.out.println("lunghezza "+c.length());
                 valWindow();
             }catch (Exception e){
-                System.out.println(e);
-
+                HelloController.vlOp = false;
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("errore di connessione");
+                alert.setContentText("impossibile connettersi al server, verificare la connessione e riprovare");
+                alert.showAndWait();
             }
         }
     }
@@ -107,30 +115,33 @@ public class ValController {
             Stage stage = new Stage();
             stage.setResizable(false);
             stage.setScene(new Scene(parent));
-            stage.initStyle(StageStyle.UNDECORATED);
+            if (nome.length()>17){
+                nome = nome.substring(0,16);
+                nome = nome + "...";
+
+            }
+
+            stage.setOnCloseRequest(WindowEvent::consume);
             ValController vc = fxmlLoader.getController();
             vc.val_cont.setText(i/2+1+"/"+canzoni.length/2);
             vc.val_nome.setText(nome);
             vc.val_id.setText(id);
             stage.show();
-        }catch (Exception e){
-            System.out.println(e);
-        }
+        }catch (Exception e){}
     }
     public void continua(ActionEvent ae){
         boolean valid = true;
-        //System.out.println(AmazementGroup.getSelectedToggle().isSelected());
-        //per verifica selezione
         if (AmazementGroup.getSelectedToggle()==null||SolemnityGroup.getSelectedToggle()==null||TendernessGroup.getSelectedToggle()==null || NostalgiaGroup.getSelectedToggle()==null||CalmnessGroup.getSelectedToggle()==null||PowerGroup.getSelectedToggle()==null||JoyGroup.getSelectedToggle()==null||TensionGroup.getSelectedToggle()==null||SadnessGroup.getSelectedToggle()==null){
-            System.out.println("SELEZIONARE TUTTI I MERDA DI VALORI");
+            val_err.setText("Valutare tutte le emozioni prima di continuare");
         }else {
             r =r+val_id.getText()+"~";
             r =  r+AmazementGroup.getSelectedToggle().selectedProperty().getBean().toString().substring(16,17)+"~";
-            System.out.println(AmT.getText());
             if (AmT.getText().length() > 256){
-                System.out.println("Amazement troppo lungo");
+                val_err.setText("stringa Amazement troppo lunga");
                 valid=false;
-            }else if ( AmT.getText().isBlank()){
+            } else if (AmT.getText().contains("~")) {
+                val_err.setText("Le stringhe non possono contenere il carattere ~");
+            } else if ( AmT.getText().isBlank()){
                 r=r+"null~";
             }else{
                 r=r+AmT.getText()+"~";
@@ -138,8 +149,10 @@ public class ValController {
 
             r =  r+SolemnityGroup.getSelectedToggle().selectedProperty().getBean().toString().substring(16,17)+"~";
             if (SoT.getText().length() > 256){
-                System.out.println("Solemnity troppo lungo");
+                val_err.setText("stringa Solemnity troppo lunga");
                 valid=false;
+            } else if (AmT.getText().contains("~")) {
+                val_err.setText("Le stringhe non possono contenere il carattere ~");
             }else if ( SoT.getText().isBlank()){
                 r=r+"null~";
             }else{
@@ -148,8 +161,10 @@ public class ValController {
 
             r =  r+TendernessGroup.getSelectedToggle().selectedProperty().getBean().toString().substring(16,17)+"~";
             if (TeT.getText().length() > 256){
-                System.out.println("Tenderness troppo lungo");
+                val_err.setText("stringa Tenderness troppo lunga");
                 valid=false;
+            } else if (AmT.getText().contains("~")) {
+                val_err.setText("Le stringhe non possono contenere il carattere ~");
             }else if ( TeT.getText().isBlank()){
                 r=r+"null~";
             }else{
@@ -157,8 +172,10 @@ public class ValController {
             }
             r =  r+NostalgiaGroup.getSelectedToggle().selectedProperty().getBean().toString().substring(16,17)+"~";
             if (NoT.getText().length() > 256){
-                System.out.println("Nostalgia troppo lungo");
+                val_err.setText("stringa Nostalgia troppo lunga");
                 valid=false;
+            } else if (AmT.getText().contains("~")) {
+                val_err.setText("Le stringhe non possono contenere il carattere ~");
             }else if ( NoT.getText().isBlank()){
                 r=r+"null~";
             }else{
@@ -167,8 +184,10 @@ public class ValController {
 
             r =  r+CalmnessGroup.getSelectedToggle().selectedProperty().getBean().toString().substring(16,17)+"~";
             if (CaT.getText().length() > 256){
-                System.out.println("Calmness troppo lungo");
+                val_err.setText("stringa Calmness troppo lunga");
                 valid=false;
+            } else if (AmT.getText().contains("~")) {
+                val_err.setText("Le stringhe non possono contenere il carattere ~");
             }else if ( CaT.getText().isBlank()){
                 r=r+"null~";
             }else{
@@ -177,8 +196,10 @@ public class ValController {
 
             r =  r+PowerGroup.getSelectedToggle().selectedProperty().getBean().toString().substring(16,17)+"~";
             if (PoT.getText().length() > 256){
-                System.out.println("Power troppo lungo");
+                val_err.setText("stringa Power troppo lunga");
                 valid=false;
+            } else if (AmT.getText().contains("~")) {
+                val_err.setText("Le stringhe non possono contenere il carattere ~");
             }else if ( PoT.getText().isBlank()){
                 r=r+"null~";
             }else{
@@ -187,8 +208,10 @@ public class ValController {
 
             r =  r+JoyGroup.getSelectedToggle().selectedProperty().getBean().toString().substring(16,17)+"~";
             if (JoT.getText().length() > 256){
-                System.out.println("Joy troppo lungo");
+                val_err.setText("stringa Joy troppo lunga");
                 valid=false;
+            } else if (AmT.getText().contains("~")) {
+                val_err.setText("Le stringhe non possono contenere il carattere ~");
             }else if ( JoT.getText().isBlank()){
                 r=r+"null~";
             }else{
@@ -197,8 +220,10 @@ public class ValController {
 
             r =  r+TensionGroup.getSelectedToggle().selectedProperty().getBean().toString().substring(16,17)+"~";
             if (TnT.getText().length() > 256){
-                System.out.println("Tension troppo lungo");
+                val_err.setText("stringa Tension troppo lunga");
                 valid=false;
+            } else if (AmT.getText().contains("~")) {
+                val_err.setText("Le stringhe non possono contenere il carattere ~");
             }else if ( TnT.getText().isBlank()){
                 r=r+"null~";
             }else{
@@ -207,9 +232,11 @@ public class ValController {
 
             r =  r+SadnessGroup.getSelectedToggle().selectedProperty().getBean().toString().substring(16,17)+"~";
             if (SaT.getText().length() > 256){
-                System.out.println("Sadness troppo lungo");
+                val_err.setText("stringa Sadness troppo lunga");
                 valid=false;
-            }else if ( SaT.getText().isBlank()){
+            } else if (AmT.getText().contains("~")) {
+                val_err.setText("Le stringhe non possono contenere il carattere ~");
+            } else if ( SaT.getText().isBlank()){
                 r=r+"null~";
             }else{
                 r=r+SaT.getText()+"~";
@@ -219,7 +246,6 @@ public class ValController {
             // ogni canzone occupa 1 (id) + 9 (valutazioni) + 9 (recensioni) = 19 blocchi
             // R va preceduto da id playlist -> IDPLAYLIST ~ BLOCCO CANZONE1 ~ BLOCCO CANZONE2 ~ ...
             // dimensione R = 1 + (numero canzoni * 9)
-            System.out.println(r);
             if (valid) {
                 i += 2;
                 if (i != canzoni.length) {
@@ -232,11 +258,7 @@ public class ValController {
                     esci(ae);
                 }
             }
-            else {
-                System.out.println("input non valido");
-            }
         }
-
     }
     public void esci(ActionEvent ae){
         Node n =(Node)ae.getSource();
@@ -259,7 +281,8 @@ public class ValController {
             nomeplaylist = res[0];
             numcanzoni = res[1];
 
-
-        }catch (Exception e){}
+        }catch (Exception e){
+            val_err.setText("impossibile connettersi al server");
+        }
     }
 }

@@ -13,7 +13,7 @@
                <children>
                   <Text fx:id="pb_nome" layoutX="59.0" layoutY="8.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Crea Playlist" wrappingWidth="106.13665008544922" x="23.0" y="36.0">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
                </children>
