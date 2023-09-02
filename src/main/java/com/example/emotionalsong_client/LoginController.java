@@ -56,39 +56,44 @@ public class LoginController {
         errText.setText("");
         String cred = credTXTFD.getText();
         String pw = pwTXTFD.getText();
-        if (!cred.contains("~")&&!pw.contains("~")){
-            try {
-                Socket s = new Socket(HelloController.IP, HelloController.PORT);
-                PrintWriter out = new PrintWriter(s.getOutputStream(), true);
-                BufferedReader in =new BufferedReader(new InputStreamReader(s.getInputStream()));
+        if (!cred.equals("") || !pw.equals("")){
+            if (!cred.contains("~")&&!pw.contains("~")){
+                try {
+                    Socket s = new Socket(HelloController.IP, HelloController.PORT);
+                    PrintWriter out = new PrintWriter(s.getOutputStream(), true);
+                    BufferedReader in =new BufferedReader(new InputStreamReader(s.getInputStream()));
 
-                out.println("L");
-                in.readLine();
-                out.println(cred+"~"+pw);
+                    out.println("L");
+                    in.readLine();
+                    out.println(cred+"~"+pw);
 
-                //SERVER RITORNA -1 SE NON TROVATO, ALTRIMENTI ID UTENTE E USERNAME IN FORMATO "IDUTENTE~USERNAME"
-                String st = in.readLine();
-                if (!st.equals("-1")){
-                    String[] idname = st.split("~");
-                    HelloController.userID = idname[1];
-                    accediB.setVisible(false);
-                    usernameTxt.setText(idname[0]);
-                    usernameTxt.setVisible(true);
-                    in.close();
-                    out.close();
-                    s.close();
-                    close(ae);
-                    hc.loadPlaylists();
+                    //SERVER RITORNA -1 SE NON TROVATO, ALTRIMENTI ID UTENTE E USERNAME IN FORMATO "IDUTENTE~USERNAME"
+                    String st = in.readLine();
+                    if (!st.equals("-1")){
+                        String[] idname = st.split("~");
+                        HelloController.userID = idname[1];
+                        accediB.setVisible(false);
+                        usernameTxt.setText(idname[0]);
+                        usernameTxt.setVisible(true);
+                        in.close();
+                        out.close();
+                        s.close();
+                        close(ae);
+                        hc.loadPlaylists();
 
-                }else{
-                    errText.setText("credenziali errate");
+                    }else{
+                        errText.setText("credenziali errate");
+                    }
+
+                }catch (IOException e){
+                    errText.setText("impossibile connettersi al server");
                 }
-
-            }catch (IOException e){
-                errText.setText("impossibile connettersi al server");
+            }else{
+                errText.setText("il valore ~ non può essere presente in username o password");
             }
-        }else{
-            errText.setText("il valore ~ non può essere presente in username o password");
+
+        }else {
+            errText.setText("i valori non possono essere vuoti");
         }
 
 

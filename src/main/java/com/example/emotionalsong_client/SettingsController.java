@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -27,7 +29,7 @@ public class SettingsController {
             Stage stage = new Stage();
             stage.setResizable(false);
             stage.setScene(new Scene(r1));
-            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setOnCloseRequest(WindowEvent::consume);
             stage.show();
             SettingsController sc = fxmlLoader.getController();
             sc.ipL.setText(HelloController.IP);

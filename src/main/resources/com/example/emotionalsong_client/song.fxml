@@ -10,17 +10,17 @@
    <children>
       <Text fx:id="sg_nome" layoutX="28.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome canzone" wrappingWidth="670.1366653442383">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
       </Text>
       <Text fx:id="sg_anno" layoutX="421.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="anno" wrappingWidth="283.73670196533203">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
       </Text>
-      <Text fx:id="sg_artista" layoutX="28.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Artista" wrappingWidth="283.73670196533203">
+      <Text fx:id="sg_artista" layoutX="28.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Artista" wrappingWidth="283.73670196533203">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
       </Text>
       <AnchorPane layoutX="7.0" layoutY="115.0" prefHeight="250.0" prefWidth="762.0">

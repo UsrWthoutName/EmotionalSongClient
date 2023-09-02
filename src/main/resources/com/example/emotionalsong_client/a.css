@@ -14,7 +14,8 @@
     -fx-focus-color: transparent;
     -fx-background-insets: -1.4, 0, 1, 2;
 }
-#songblock{
-    -fx-border-width: 0 0 15 0;
-    -fx-border-color: black; 
+#elm{
+    -fx-border-width: 2px 0 0 0;
+    -fx-border-color: black;
+    -fx-border-style: solid;
 }

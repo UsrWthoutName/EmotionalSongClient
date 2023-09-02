@@ -3,6 +3,7 @@ package com.example.emotionalsong_client;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.LoadException;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,6 +16,7 @@ import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -127,7 +129,9 @@ public class ValController {
             vc.val_nome.setText(nome);
             vc.val_id.setText(id);
             stage.show();
-        }catch (Exception e){}
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
     }
     public void continua(ActionEvent ae){
         boolean valid = true;

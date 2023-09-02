@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="729.0" prefWidth="292.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.emotionalsong_client.ValController">
+<AnchorPane prefHeight="729.0" prefWidth="292.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.emotionalsong_client.ValController">
    <children>
       <Text fx:id="val_nome" layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Canzone" textAlignment="CENTER" wrappingWidth="264.0">
          <font>
@@ -18,8 +18,8 @@
       <RadioButton fx:id="A1" layoutX="110.0" layoutY="97.0" mnemonicParsing="false">
          <toggleGroup>
             <ToggleGroup fx:id="AmazementGroup" />
-         </toggleGroup></RadioButton>
-      
+         </toggleGroup>
+      </RadioButton>
       <RadioButton fx:id="A2" layoutX="140.0" layoutY="97.0" mnemonicParsing="false" toggleGroup="$AmazementGroup" />
       <RadioButton fx:id="A3" layoutX="170.0" layoutY="97.0" mnemonicParsing="false" toggleGroup="$AmazementGroup" />
       <RadioButton fx:id="A4" layoutX="200.0" layoutY="97.0" mnemonicParsing="false" toggleGroup="$AmazementGroup" />
@@ -33,30 +33,19 @@
          </font>
       </Text>
       <Text fx:id="val_err" layoutX="19.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="246.0" />
+
       <RadioButton fx:id="B1" layoutX="110.0" layoutY="163.0" mnemonicParsing="false">
          <toggleGroup>
             <ToggleGroup fx:id="SolemnityGroup" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="B2" layoutX="140.0" layoutY="163.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="SolemnityGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="B2" layoutX="140.0" layoutY="163.0" mnemonicParsing="false" toggleGroup="$SolemnityGroup">
       </RadioButton>
-      <RadioButton fx:id="B3" layoutX="170.0" layoutY="163.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="SolemnityGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="B3" layoutX="170.0" layoutY="163.0" mnemonicParsing="false" toggleGroup="$SolemnityGroup">
       </RadioButton>
-      <RadioButton fx:id="B4" layoutX="200.0" layoutY="163.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="SolemnityGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="B4" layoutX="200.0" layoutY="163.0" mnemonicParsing="false" toggleGroup="$SolemnityGroup">
       </RadioButton>
-      <RadioButton fx:id="B5" layoutX="230.0" layoutY="163.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="SolemnityGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="B5" layoutX="230.0" layoutY="163.0" mnemonicParsing="false" toggleGroup="$SolemnityGroup">
       </RadioButton>
       <Text layoutX="21.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solemnity" wrappingWidth="71.13671875" />
       <TextField fx:id="SoT" layoutX="18.0" layoutY="191.0" prefHeight="26.0" prefWidth="246.0" />
@@ -65,25 +54,13 @@
             <ToggleGroup fx:id="TendernessGroup" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="C2" layoutX="140.0" layoutY="228.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="TendernessGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="C2" layoutX="140.0" layoutY="228.0" mnemonicParsing="false" toggleGroup="$TendernessGroup">
       </RadioButton>
-      <RadioButton fx:id="C3" layoutX="170.0" layoutY="228.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="TendernessGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="C3" layoutX="170.0" layoutY="228.0" mnemonicParsing="false" toggleGroup="$TendernessGroup">
       </RadioButton>
-      <RadioButton fx:id="C4" layoutX="200.0" layoutY="228.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="TendernessGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="C4" layoutX="200.0" layoutY="228.0" mnemonicParsing="false" toggleGroup="$TendernessGroup">
       </RadioButton>
-      <RadioButton fx:id="C5" layoutX="230.0" layoutY="228.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="TendernessGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="C5" layoutX="230.0" layoutY="228.0" mnemonicParsing="false" toggleGroup="$TendernessGroup">
       </RadioButton>
       <Text layoutX="21.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tenderness" wrappingWidth="71.13671875" />
       <TextField fx:id="TeT" layoutX="20.0" layoutY="257.0" prefHeight="26.0" prefWidth="246.0" />
@@ -92,25 +69,13 @@
             <ToggleGroup fx:id="NostalgiaGroup" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="D2" layoutX="140.0" layoutY="293.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="NostalgiaGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="D2" layoutX="140.0" layoutY="293.0" mnemonicParsing="false" toggleGroup="$NostalgiaGroup">
       </RadioButton>
-      <RadioButton fx:id="D3" layoutX="170.0" layoutY="293.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="NostalgiaGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="D3" layoutX="170.0" layoutY="293.0" mnemonicParsing="false" toggleGroup="$NostalgiaGroup">
       </RadioButton>
-      <RadioButton fx:id="D4" layoutX="200.0" layoutY="293.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="NostalgiaGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="D4" layoutX="200.0" layoutY="293.0" mnemonicParsing="false" toggleGroup="$NostalgiaGroup">
       </RadioButton>
-      <RadioButton fx:id="D5" layoutX="230.0" layoutY="293.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="NostalgiaGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="D5" layoutX="230.0" layoutY="293.0" mnemonicParsing="false" toggleGroup="$NostalgiaGroup">
       </RadioButton>
       <Text layoutX="21.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nostalgia" wrappingWidth="71.13671875" />
       <TextField fx:id="NoT" layoutX="19.0" layoutY="321.0" prefHeight="26.0" prefWidth="246.0" />
@@ -119,25 +84,13 @@
             <ToggleGroup fx:id="CalmnessGroup" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="E2" layoutX="140.0" layoutY="358.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="CalmnessGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="E2" layoutX="140.0" layoutY="358.0" mnemonicParsing="false" toggleGroup="$CalmnessGroup">
       </RadioButton>
-      <RadioButton fx:id="E3" layoutX="170.0" layoutY="358.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="CalmnessGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="E3" layoutX="170.0" layoutY="358.0" mnemonicParsing="false" toggleGroup="$CalmnessGroup">
       </RadioButton>
-      <RadioButton fx:id="E4" layoutX="200.0" layoutY="358.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="CalmnessGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="E4" layoutX="200.0" layoutY="358.0" mnemonicParsing="false" toggleGroup="$CalmnessGroup" >
       </RadioButton>
-      <RadioButton fx:id="E5" layoutX="230.0" layoutY="358.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="CalmnessGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="E5" layoutX="230.0" layoutY="358.0" mnemonicParsing="false" toggleGroup="$CalmnessGroup">
       </RadioButton>
       <Text layoutX="21.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calmness" wrappingWidth="71.13671875" />
       <TextField fx:id="CaT" layoutX="26.0" layoutY="385.0" prefHeight="26.0" prefWidth="246.0" />
@@ -146,25 +99,13 @@
             <ToggleGroup fx:id="PowerGroup" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="F2" layoutX="140.0" layoutY="421.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="PowerGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="F2" layoutX="140.0" layoutY="421.0" mnemonicParsing="false" toggleGroup="$PowerGroup">
       </RadioButton>
-      <RadioButton fx:id="F3" layoutX="170.0" layoutY="421.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="PowerGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="F3" layoutX="170.0" layoutY="421.0" mnemonicParsing="false" toggleGroup="$PowerGroup">
       </RadioButton>
-      <RadioButton fx:id="F4" layoutX="200.0" layoutY="421.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="PowerGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="F4" layoutX="200.0" layoutY="421.0" mnemonicParsing="false" toggleGroup="$PowerGroup">
       </RadioButton>
-      <RadioButton fx:id="F5" layoutX="230.0" layoutY="421.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="PowerGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="F5" layoutX="230.0" layoutY="421.0" mnemonicParsing="false" toggleGroup="$PowerGroup">
       </RadioButton>
       <Text layoutX="26.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Power" wrappingWidth="71.13671875" />
       <TextField fx:id="PoT" layoutX="26.0" layoutY="449.0" prefHeight="26.0" prefWidth="246.0" />
@@ -173,25 +114,13 @@
             <ToggleGroup fx:id="JoyGroup" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="G2" layoutX="140.0" layoutY="486.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="JoyGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="G2" layoutX="140.0" layoutY="486.0" mnemonicParsing="false" toggleGroup="$JoyGroup">
       </RadioButton>
-      <RadioButton fx:id="G3" layoutX="170.0" layoutY="486.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="JoyGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="G3" layoutX="170.0" layoutY="486.0" mnemonicParsing="false" toggleGroup="$JoyGroup">
       </RadioButton>
-      <RadioButton fx:id="G4" layoutX="200.0" layoutY="486.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="JoyGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="G4" layoutX="200.0" layoutY="486.0" mnemonicParsing="false" toggleGroup="$JoyGroup">
       </RadioButton>
-      <RadioButton fx:id="G5" layoutX="230.0" layoutY="486.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="JoyGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="G5" layoutX="230.0" layoutY="486.0" mnemonicParsing="false" toggleGroup="$JoyGroup">
       </RadioButton>
       <Text layoutX="26.0" layoutY="500.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Joy" wrappingWidth="71.13671875" />
       <TextField fx:id="JoT" layoutX="26.0" layoutY="514.0" prefHeight="26.0" prefWidth="246.0" />
@@ -200,25 +129,13 @@
             <ToggleGroup fx:id="TensionGroup" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="H2" layoutX="140.0" layoutY="550.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="TensionGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="H2" layoutX="140.0" layoutY="550.0" mnemonicParsing="false" toggleGroup="$TensionGroup">
       </RadioButton>
-      <RadioButton fx:id="H3" layoutX="170.0" layoutY="550.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="TensionGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="H3" layoutX="170.0" layoutY="550.0" mnemonicParsing="false" toggleGroup="$TensionGroup">
       </RadioButton>
-      <RadioButton fx:id="H4" layoutX="200.0" layoutY="550.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="TensionGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="H4" layoutX="200.0" layoutY="550.0" mnemonicParsing="false" toggleGroup="$TensionGroup">
       </RadioButton>
-      <RadioButton fx:id="H5" layoutX="230.0" layoutY="550.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="TensionGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="H5" layoutX="230.0" layoutY="550.0" mnemonicParsing="false" toggleGroup="$TensionGroup">
       </RadioButton>
       <Text layoutX="26.0" layoutY="563.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tension" wrappingWidth="71.13671875" />
       <TextField fx:id="TnT" layoutX="26.0" layoutY="578.0" prefHeight="26.0" prefWidth="246.0" />
@@ -227,25 +144,13 @@
             <ToggleGroup fx:id="SadnessGroup" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="I2" layoutX="140.0" layoutY="616.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="SadnessGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="I2" layoutX="140.0" layoutY="616.0" mnemonicParsing="false" toggleGroup="$SadnessGroup">
       </RadioButton>
-      <RadioButton fx:id="I3" layoutX="170.0" layoutY="616.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="SadnessGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="I3" layoutX="170.0" layoutY="616.0" mnemonicParsing="false" toggleGroup="$SadnessGroup">
       </RadioButton>
-      <RadioButton fx:id="I4" layoutX="200.0" layoutY="616.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="SadnessGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="I4" layoutX="200.0" layoutY="616.0" mnemonicParsing="false" toggleGroup="$SadnessGroup">
       </RadioButton>
-      <RadioButton fx:id="I5" layoutX="230.0" layoutY="616.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="SadnessGroup" />
-         </toggleGroup>
+      <RadioButton fx:id="I5" layoutX="230.0" layoutY="616.0" mnemonicParsing="false" toggleGroup="$SadnessGroup">
       </RadioButton>
       <Text layoutX="26.0" layoutY="629.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sadness" wrappingWidth="71.13671875" />
       <TextField fx:id="SaT" layoutX="26.0" layoutY="642.0" prefHeight="26.0" prefWidth="246.0" />
