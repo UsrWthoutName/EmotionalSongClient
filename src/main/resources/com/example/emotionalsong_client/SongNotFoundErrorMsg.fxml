@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="60.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="60.0" prefWidth="764.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <Text layoutX="142.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non è stata trovata nessuna canzone con Artista o Titolo inserito">
          <font>
