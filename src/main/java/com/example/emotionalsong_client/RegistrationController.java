@@ -18,7 +18,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-
+/**
+ * Questa classe gestisce la registrazione di un nuovo utente nell'applicazione.
+ */
 public class RegistrationController {
 
     @FXML
@@ -43,7 +45,12 @@ public class RegistrationController {
 
     static private HelloController hc;
 
-
+    /**
+     * Metodo per caricare la finestra di registrazione.
+     *
+     * @param c L'istanza di HelloController
+     * @throws IOException Eccezione in caso di errore nella lettura del file FXML
+     */
     public void load(HelloController c) throws IOException {
         hc = c;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Registration.fxml"));
@@ -54,6 +61,13 @@ public class RegistrationController {
         stage.setScene(new Scene(r1));
         stage.show();
     }
+
+    /**
+     * Metodo per tornare alla schermata di accesso (login).
+     *
+     * @param ae L'evento di azione generato
+     * @throws IOException Eccezione in caso di errore durante la chiusura della finestra
+     */
     public void accedi(ActionEvent ae) throws IOException{
 
         close(ae);
@@ -61,7 +75,11 @@ public class RegistrationController {
         hc.login();
     }
 
-
+    /**
+     * Metodo per gestire la registrazione di un nuovo utente quando viene premuto il pulsante "Registrati".
+     *
+     * @param ae L'evento di azione generato
+     */
     public void register(ActionEvent ae){
         errTXT.setText("");
         if (nmTF.getText().contains("~") || snmTF.getText().contains("~") || emTF.getText().contains("~") || unTF.getText().contains("~") || pwTF.getText().contains("~") || cfTF.getText().contains("~") || adTF.getText().contains("~") ){
@@ -117,7 +135,12 @@ public class RegistrationController {
             }
         }
     }
-
+    /**
+     * Metodo per verificare se una stringa contiene solo caratteri alfabetici.
+     *
+     * @param s La stringa da verificare
+     * @return True se la stringa contiene solo caratteri alfabetici, altrimenti False
+     */
     private boolean ncTest(String s){   //ritorna true se non contiene numeri
         for (int i=0; i<s.length(); i++){
             if (Character.isDigit(s.charAt(i))){
@@ -126,6 +149,12 @@ public class RegistrationController {
         }
         return true;
     }
+    /**
+     * Metodo per verificare se una stringa è un indirizzo email valido.
+     *
+     * @param s La stringa da verificare
+     * @return True se la stringa è un indirizzo email valido, altrimenti False
+     */
     private boolean emailTest(String s){
         if (!s.contains(".")){
             return false;
@@ -134,7 +163,12 @@ public class RegistrationController {
         }
         return true;
     }
-
+    /**
+     * Metodo per verificare se una stringa è un codice fiscale valido.
+     *
+     * @param s La stringa da verificare
+     * @return True se la stringa è un codice fiscale valido, altrimenti False
+     */
     private boolean codfisTest(String s){
         int i = 0;
 
@@ -180,7 +214,6 @@ public class RegistrationController {
         }
         return true;
     }
-
     public void close(ActionEvent ae){
         Node n =(Node)ae.getSource();
         Stage s = (Stage) n.getScene().getWindow();

@@ -14,13 +14,19 @@ import javafx.stage.WindowEvent;
 import java.io.FileWriter;
 import java.io.IOException;
 
-
+/**
+ * Questa classe gestisce le impostazioni dell'applicazione.
+ */
 public class SettingsController {
     @FXML
     private TextField ipL;
     @FXML
     private TextField PortL;
-
+    /**
+     * Metodo per caricare la finestra delle impostazioni.
+     *
+     * @throws IOException Eccezione in caso di errore nella lettura del file FXML
+     */
     public void load() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("settings.fxml"));
         if (!HelloController.StOp){
@@ -36,12 +42,23 @@ public class SettingsController {
             sc.PortL.setText(Integer.toString(HelloController.PORT));
         }
     }
+
+    /**
+     * Metodo per chiudere la finestra delle impostazioni.
+     *
+     * @param ae L'evento di azione generato
+     */
     public void exit(ActionEvent ae){
         Node n =(Node)ae.getSource();
         Stage s = (Stage) n.getScene().getWindow();
         s.close();
         HelloController.StOp = false;
     }
+    /**
+     * Metodo per salvare le nuove impostazioni IP e porta.
+     *
+     * @param ae L'evento di azione generato
+     */
     public void save(ActionEvent ae){
         HelloController.IP = ipL.getText();
         HelloController.PORT = Integer.parseInt(PortL.getText());

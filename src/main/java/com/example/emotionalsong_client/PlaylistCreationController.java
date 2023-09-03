@@ -16,12 +16,17 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-
+/**
+ * Questa classe gestisce la creazione di una nuova playlist nell'interfaccia utente.
+ */
 public class PlaylistCreationController {
     @FXML
     private TextField pl_name;
     @FXML
     private Text errTXT;
+    /**
+     * Metodo per caricare la finestra di creazione di una nuova playlist.
+     */
     public void load(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("creaPlaylist.fxml"));
         try {
@@ -36,12 +41,22 @@ public class PlaylistCreationController {
             }
         }catch (Exception e){}
     }
+    /**
+     * Metodo per chiudere la finestra di creazione di una nuova playlist.
+     *
+     * @param ae L'evento di azione generato dalla chiusura della finestra
+     */
     public void close(ActionEvent ae){
         Node n =(Node)ae.getSource();
         Stage s = (Stage) n.getScene().getWindow();
         s.close();
         HelloController.CPOP = false;
     }
+    /**
+     * Metodo per creare una nuova playlist quando viene cliccato il pulsante "Crea".
+     *
+     * @param ae L'evento di azione generato dal pulsante "Crea"
+     */
     public void crea(ActionEvent ae){
         String np = pl_name.getText();
         if (np.equals("")){

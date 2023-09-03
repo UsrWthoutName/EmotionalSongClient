@@ -11,7 +11,9 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.URL;
-
+/**
+ * Questa classe gestisce la visualizzazione di una playlist nell'interfaccia utente.
+ */
 public class PlaylistController {
     @FXML
     private Text pl_nome;
@@ -51,6 +53,14 @@ public class PlaylistController {
     static private String playlistid;
     static private String playlistnome;
     static private String numerocanzoni;
+    /**
+     * Metodo per caricare la visualizzazione di una playlist nell'interfaccia utente.
+     *
+     * @param id L'ID della playlist
+     * @param n Il nome della playlist
+     * @param nc Il numero di canzoni nella playlist
+     */
+
     public void load(String id, String n, String nc) {
         playlistid = id;
         playlistnome = n;
@@ -159,7 +169,9 @@ public class PlaylistController {
             }catch (IOException e1){}
         }
     }
-
+    /**
+     * Metodo per valutare una playlist.
+     */
     public void valuta(){
         HelloController.hc.valuta(pl_id.getText());
     }

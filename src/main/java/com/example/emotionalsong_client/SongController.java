@@ -13,7 +13,9 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.URL;
-
+/**
+ * Questa classe gestisce la visualizzazione delle informazioni di una canzone, inclusi i voti e le recensioni.
+ */
 public class SongController {
     @FXML
     public Text sg_nome;
@@ -62,7 +64,14 @@ public class SongController {
 
     static private String[] pln;
     static private String[] pli;
-
+    /**
+     * Carica le informazioni della canzone e le relative valutazioni e recensioni.
+     *
+     * @param id    ID della canzone
+     * @param nome  Nome della canzone
+     * @param autore  Artista della canzone
+     * @param anno  Anno di pubblicazione della canzone
+     */
     public void load(String id, String nome, String autore, String anno){
         //pl = HelloController.playlistNOME;
         boolean lg = true;
@@ -184,8 +193,10 @@ public class SongController {
                 HelloController.centralVB.getChildren().add(ca);
             }catch (IOException e1){}
         }
-
     }
+    /**
+     * Aggiunge la canzone alla playlist selezionata.
+     */
     public void addPlaylist(){
         sg_log.setText("");
         try {

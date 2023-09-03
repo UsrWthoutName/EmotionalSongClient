@@ -18,7 +18,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-
+/**
+ * Questa classe gestisce la finestra di login dell'applicazione.
+ */
 public class LoginController {
     @FXML
     TextField credTXTFD;
@@ -34,6 +36,14 @@ public class LoginController {
     static private HelloController hc;
 
 
+    /**
+     * Metodo per caricare la finestra di login.
+     *
+     * @param b Il pulsante di accesso
+     * @param t Il campo di testo dell'username
+     * @param c Un'istanza di HelloController
+     * @throws IOException Eccezione lanciata in caso di errore di caricamento
+     */
     public void load(Button b, Text t,HelloController c) throws IOException {
         accediB = b;
         usernameTxt = t;
@@ -49,6 +59,11 @@ public class LoginController {
             stage.show();
         }
     }
+    /**
+     * Metodo per gestire il pulsante "Accedi".
+     *
+     * @param ae L'evento di azione generato dal pulsante
+     */
     public void Accedi(ActionEvent ae)  {
 
         //CONTROLLARE PRESENZA CAMPI
@@ -95,14 +110,23 @@ public class LoginController {
         }else {
             errText.setText("i valori non possono essere vuoti");
         }
-
-
     }
+    /**
+     * Metodo per gestire il pulsante "Registrati".
+     *
+     * @param ae L'evento di azione generato dal pulsante
+     * @throws IOException Eccezione lanciata in caso di errore di registrazione
+     */
     public void Registrati(ActionEvent ae) throws IOException {
         hc.registra(accediB, usernameTxt, hc);
         close(ae);
         HelloController.LgOp=true;
     }
+    /**
+     * Metodo per chiudere la finestra di login.
+     *
+     * @param ae L'evento di azione generato dalla chiusura della finestra
+     */
     public void close(ActionEvent ae){
         Node n =(Node)ae.getSource();
         Stage s = (Stage) n.getScene().getWindow();

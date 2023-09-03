@@ -9,6 +9,9 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * Questa classe gestisce un blocco di playlist nell'interfaccia utente.
+ */
 public class PlaylistBlockController {
     @FXML
     Text pb_nome;
@@ -19,8 +22,14 @@ public class PlaylistBlockController {
     @FXML
     private static VBox pbox;
 
-
-
+    /**
+     * Metodo per caricare un blocco di playlist nell'interfaccia utente.
+     *
+     * @param p Il contenitore principale delle playlist
+     * @param id L'ID della playlist
+     * @param nome Il nome della playlist
+     * @param ncanzoni Il numero di canzoni nella playlist
+     */
     public void load(VBox p, String id, String nome, String ncanzoni){
         pbox = p;
 
@@ -40,14 +49,21 @@ public class PlaylistBlockController {
         pbox.getChildren().add(ca);
 
     }
-
+    /**
+     * Metodo per aprire una playlist quando viene cliccata.
+     */
     public void loadPlaylist(){
         HelloController.hc.openPlaylist(pb_id.getText(), pb_nome.getText(), pb_num.getText());
     }
+    /**
+     * Metodo per creare una nuova playlist quando viene cliccato il pulsante di creazione.
+     */
     public void creaPlaylist(){
         HelloController.hc.creaPlaylist();
     }
-
+    /**
+     * Metodo per ricaricare la lista delle playlist.
+     */
     public void reload(){
         HelloController.hc.loadPlaylists();
     }

@@ -15,7 +15,9 @@ import java.io.*;
 import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/**
+ * L'HelloController gestisce l'interfaccia utente e le azioni degli utenti.
+ */
 public class HelloController implements Initializable {
     @FXML
     public VBox Pbox;
@@ -60,7 +62,13 @@ public class HelloController implements Initializable {
 
 
 
-    //METODO LOAD CARICA INTERFACCIA E RICEVE ISTANZA DI HELLOCONTROLLER
+    /**
+     * Metodo per caricare l'interfaccia utente e ricevere un'istanza di HelloController.
+     *
+     * @param stage L'oggetto Stage per la finestra principale
+     * @param c Un'istanza di HelloController
+     * @throws IOException Eccezione lanciata in caso di errore di caricamento
+     */
     public void load(Stage stage, HelloController c) throws IOException {
         hc = c;
         FXMLLoader fxmlLoader = new FXMLLoader(EmotionalSong.class.getResource("application.fxml"));
@@ -72,12 +80,22 @@ public class HelloController implements Initializable {
         stage.show();
     }
 
-
-
+    /** Metodo per gestire il login.
+     *
+     * @throws IOException Eccezione lanciata in caso di errore di accesso
+     */
     public void login() throws IOException {
         LoginController login = new LoginController();
         login.load(accediBTN, usernameTag, hc);
     }
+    /**
+     * Metodo per gestire la registrazione.
+     *
+     * @param b Il pulsante di registrazione
+     * @param u Il tag dell'username
+     * @param h Un'istanza di HelloController
+     * @throws IOException Eccezione lanciata in caso di errore di registrazione
+     */
     public void registra(Button b, Text u, HelloController h) throws IOException {
         hc = h;
         usernameTag = u;

@@ -105,6 +105,9 @@ public class ValController {
             }
         }
     }
+    /**
+     * 
+     * */
     public void valWindow(){
         String id = canzoni[i];
         String nome = canzoni[i+1];
@@ -133,6 +136,10 @@ public class ValController {
             System.out.println(e.getMessage());
         }
     }
+    /**
+     * Il metodo continua effettua la gestione delle valutazioni e recensioni delle canzoni
+     * @param ae è l'evento di azione
+     * */
     public void continua(ActionEvent ae){
         boolean valid = true;
         if (AmazementGroup.getSelectedToggle()==null||SolemnityGroup.getSelectedToggle()==null||TendernessGroup.getSelectedToggle()==null || NostalgiaGroup.getSelectedToggle()==null||CalmnessGroup.getSelectedToggle()==null||PowerGroup.getSelectedToggle()==null||JoyGroup.getSelectedToggle()==null||TensionGroup.getSelectedToggle()==null||SadnessGroup.getSelectedToggle()==null){
@@ -257,20 +264,27 @@ public class ValController {
                     esci(ae);
                     valWindow();
                 } else {
-                    send(ae);
+                    send();
                     HelloController.hc.openPlaylist(idplaylist, nomeplaylist, numcanzoni);
                     esci(ae);
                 }
             }
         }
     }
+    /**
+     * Il metodo esci effettua la chiusura della finestra corrente
+     * @param ae è l'evento di azione
+     * */
     public void esci(ActionEvent ae){
         Node n =(Node)ae.getSource();
         Stage s = (Stage) n.getScene().getWindow();
         s.close();
         HelloController.vlOp = false;
     }
-    public void send(ActionEvent ae){
+    /**
+     * Il metodo send invia le valutazioni e le recensioni al server
+     * */
+    public void send(){
         r =  r.substring(0, r.length()-1);
         out.println(r);
         try {
